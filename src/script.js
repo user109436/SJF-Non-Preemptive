@@ -65,11 +65,13 @@ class Schedule {
   sortBurst = (que) => {
     for (let i = 0; i < que.length; i++) {
       for (let j = 0; j < que.length; j++) {
-        if (que[i].burst < que[j].burst) {
+        let a = que[i],
+          b = que[j];
+        if (a.burst < b.burst) {
           this.swap(que, i, j);
         }
-        if (que[i].burst == que[j].burst) {
-          if (que[i].arrival < que[j].arrival) {
+        if (a.burst == b.burst) {
+          if (a.arrival < b.arrival) {
             this.swap(que, i, j);
           }
         }
