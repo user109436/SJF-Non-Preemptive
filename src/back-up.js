@@ -21,6 +21,14 @@ class Schedule {
 
     for (let i = 0; i < numProcess; i++) {
       this.process.push(new Process(`P${i + 1}`, arrivals[i], burst[i]));
+      //   this.process.push({
+      //     name: `P${i + 1}`,
+      //     arrival: arrivals[i],
+      //     burst: burst[i],
+      //     completionTime: 0,
+      //     waitingTime: 0,
+      //     turnAroundTime: 0,
+      //   });
     }
   }
   timeElapseGreaterThanArrival = (timeElapsed, sortedQue) => {
@@ -163,95 +171,40 @@ class Schedule {
     return sortedArrival;
   };
 }
+/*TEST CASES*/
+// const x = {
+//   process: 5,
+//   arrival: [2, 5, 1, 0, 4],
+//   burst: [6, 2, 8, 3, 4],
+// };
 
-class GanttChartElement {}
+// const x = {
+//   process: 5,
+//   arrival: [2, 1, 4, 0, 2],
+//   burst: [1, 5, 1, 6, 3],
+// };
 
-class Log {
-  constructor(name = "", activity = "", icon = "fas fa-microchip") {
-    this.name = name;
-    this.activity = activity;
-    this.icon = icon;
-  }
-  logActvityElement = (textColor = "text-white") => {
-    let el = `
-         <div
-                class="
-                  flex
-                  min-h-10
-                  border-b border-gray-700
-                  p-2
-                "
-              >
-                <div class="self-center p-2 ${textColor}">
-                  <i class="${this.icon} fa-1x"></i> ${this.name} ${this.activity}
-                </div>
-        </div>
-        `;
-    this.appendLog(el);
-    return 1;
-  };
-  logHeadingElement = () => {
-    let el = `
-          <div
-                class="
-                  flex
-                  h-12
-                  border-b border-gray-700
-                  p-2
-                  text-green-500
-                  items-center
-                  uppercase
-                "
-              >
-                ${this.name} ${this.activity}
-              </div>
-        `;
-    this.appendLog(el);
-    return 1;
-  };
-  appendLog = (el) => {
-    let logContent = document.querySelectorAll(".log-content")[0];
-    let log = document.createRange().createContextualFragment(el);
-    logContent.insertBefore(log, logContent.lastElementChild.nextSibling);
-    return 1;
-  };
-}
-
-class TableData {
-  constructor(process) {
-    this.process = process;
-    this.tableRowElement();
-  }
-  tableRowElement = () => {
-    let tbody = document.querySelectorAll(".table-data")[0];
-    let tr = document.createElement("tr");
-
-    for (let i in this.process) {
-      let td = document.createElement("td");
-      td.className = "process-name border border-green-600 p-2";
-      td.innerHTML = this.process[i];
-      tr.appendChild(td);
-    }
-    tbody.appendChild(tr);
-  };
-}
-const x = {
-  process: 4,
-  arrival: [0, 0, 0, 0],
-  burst: [6, 8, 7, 3],
-};
+// const x = {
+//   process: 4,
+//   arrival: [0, 0, 0, 0],
+//   burst: [6, 8, 7, 3],
+// };
+// const x = {
+//   process: 4,
+//   arrival: [1, 1, 0, 0],
+//   burst: [6, 8, 7, 3],
+// };
+// const x = {
+//   process: 4,
+//   arrival: [0, 0, 0, 0],
+//   burst: [6, 8, 6, 3],
+// };
 
 function isObject(obj) {
   return obj && typeof obj === "object" && obj.constructor === Object;
 }
-
 const y = new Schedule(x.process, x.arrival, x.burst);
-y.execute();
-let z = y.sortProcessName();
+let z = y.execute();
 if (isObject(z)) {
   console.log(z);
-} else {
-  for (let i = 0; i < z.length; i++) {
-    new TableData(z[i]);
-  }
 }
