@@ -4,14 +4,178 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Short Job First</title>
+    <title>Short Job First Non-preemptive</title>
+    <!-- Font Awesome -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+      rel="stylesheet"
+    />
+    <!-- tailwind -->
+    <link
+      href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <h2>table</h2>
-    <h2>timer</h2>
-    <h2>gant chart</h2>
-    <h2>computation</h2>
-    <h2>log</h2>
+    <div class="flex bg-gray-100">
+      <div class="left flex flex-col flex-1">
+        <!-- table -->
+
+        <div class="w-full text-green-600 flex flex-col justify-center p-4">
+          <div class="shadow-md p-3 my-2 bg-white pb-5 px-4">
+            <h2 class="text-2xl text-center text-green-500 font-bold my-3">
+              Shortest Job First Non-Preemptive<br />
+              <span class="text-sm text-light"
+                >URSM Finals Project in OS by Group 2</span
+              >
+            </h2>
+            <table
+              class="
+                text-center
+                table-auto
+                border-collapse border border-green-800
+                p-5
+                w-full
+              "
+            >
+              <thead>
+                <tr>
+                  <th class="border border-green-600 p-2">Process</th>
+                  <th class="border border-green-600 p-2">Burst Time</th>
+                  <th class="border border-green-600 p-2">Arrival Time</th>
+                  <th class="border border-green-600 p-2">
+                    Completion Time <br />
+                    <span class="text-xs font-normal"
+                      >(Start Time + Burst Time)</span
+                    >
+                  </th>
+                  <th class="border border-green-600 p-2">
+                    Turn Around Time <br />
+                    <span class="text-xs font-normal"
+                      >(Completion Time - Arrival Time)</span
+                    >
+                  </th>
+                  <th class="border border-green-600 p-2">
+                    Waiting Time <br />
+                    <span class="text-xs font-normal"
+                      >(Turn Around Time - Burst Time)</span
+                    >
+                  </th>
+                  <th class="border border-green-600 p-2">
+                    Response Time <br />
+                    <span class="text-xs font-normal">(Waiting Time)</span>
+                  </th>
+                </tr>
+              </thead>
+              <tbody class="table-data">
+                <input type="hidden" />
+              </tbody>
+            </table>
+          </div>
+          <!-- computation for average (waiting time & turn around time) -->
+          <div class="computation flex justify-between flex-row my-2">
+            <div class="average-waiting-time w-1/2 shadow-md p-5 mr-2 bg-white">
+              Average waiting time:
+            </div>
+            <div
+              class="
+                average-turn-around-time
+                w-1/2
+                bg-emerald-200
+                shadow-md
+                ml-2
+                p-5
+                bg-white
+              "
+            >
+              Average Turn Around time:
+            </div>
+          </div>
+        </div>
+        <!-- gantt chart -->
+        <hr />
+        <div class="gantt-chart flex flex-col">
+          <h2 class="text-center text-2xl text-green-500 font-bold">
+            Gantt Chart
+          </h2>
+          <div class="flex p-4 text-center gantt-chart-content"></div>
+        </div>
+      </div>
+      <div class="right w-72 h-screen overflow-auto bg-gray-800">
+        <div class="p-2">
+          <div
+            class="
+              top-options
+              text-white
+              flex
+              items-center
+              border-b border-white
+              py-2
+              flex-col
+            "
+          >
+            <div class="w-full text-center">
+              <label
+                ># Process
+                <input
+                  type="number"
+                  id="num-process"
+                  placeholder="5"
+                  class="w-full text-black p-1"
+                  min="0"
+                  value="4"
+              /></label>
+              <label
+                >Arrivals<input
+                  type="text"
+                  name=""
+                  id="arrivals"
+                  placeholder="ex. 0 2 3 10 5"
+                  class="w-full text-black p-1"
+                  value="0 0 0 0"
+                />
+              </label>
+              <label
+                >Burst<input
+                  type="text"
+                  name=""
+                  id="burst"
+                  placeholder="ex. 1 2 3 4 10"
+                  class="w-full text-black p-1"
+                  value="6 8 7 3"
+                />
+              </label>
+            </div>
+            <div class="w-full flex justify-center mt-1">
+              <button
+                class="start-btn w-full py-2 text-center uppercase bg-green-500"
+              >
+                Start
+              </button>
+            </div>
+          </div>
+          <div class="bottom-logs">
+            <div class="log-content text-sm mt-2">
+              <div
+                class="
+                  flex
+                  h-12
+                  border-b border-gray-700
+                  p-2
+                  text-green-500
+                  items-center
+                  justify-center
+                  uppercase
+                "
+              >
+                Activity Log
+              </div>
+              <!-- should be inserted here -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
   <script src="./src/script.js"></script>
 </html>
