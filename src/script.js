@@ -29,7 +29,7 @@ class Schedule {
   timeElapseGreaterThanArrival = (timeElapsed, sortedQue) => {
     let que = [];
     for (let i = 0; i < sortedQue.length; i++) {
-      if (timeElapsed > sortedQue[i].arrival) {
+      if (timeElapsed >= sortedQue[i].arrival) {
         que.push(sortedQue[i]);
       }
     }
@@ -151,7 +151,7 @@ class Schedule {
         this.removeInSortedQue(q.name, sortedQue); //find process name in sorted que then remove
         que.splice(0, 1); //remove from que
       } else {
-        p.completionTime = timeElapse += p.burst;
+        p.completionTime = timeElapse += p.burst + p.arrival;
         this.printActivity(p);
         p.turnAroundTime = timeElapse - p.arrival;
         p.waitingTime = p.turnAroundTime - p.burst;
