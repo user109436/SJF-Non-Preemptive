@@ -438,9 +438,9 @@ startBtn.addEventListener("click", () => {
     } else {
       for (let i = 0; i < sortedTask.length; i++) {
         new TableData(sortedTask[i]);
-        new SolutionElement(task.solution());
-        new GanttChartElement(task);
       }
+      new SolutionElement(task.solution());
+      new GanttChartElement(task);
     }
   }
 });

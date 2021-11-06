@@ -115,8 +115,8 @@ class Schedule {
 
 let y = new Schedule(5, [4, 3, 2, 1, 0], [6, 8, 7, 3, 0]);
 // y.sortArrival();
-y.calculate();
-console.log(y.process);
+// y.calculate();
+// console.log(y.process);
 
 const x = [
   [0, 6, "P1"],
@@ -145,3 +145,31 @@ const object = [
 // let arr2 = [...arr];
 // arr2.splice(0, 1);
 // console.log(arr2);
+
+// const swap = (arr, i, j) => {
+//   let temp = a;
+//   a = b;
+//   b = temp;
+//   console.log(`a:${a} b:${b}`);
+// };
+
+// // swap(1, 2);
+
+// console.log(`a:${a} b:${b}`);
+
+// for (let i = 0; i < 5; i++) {
+//   for (let j = 0; j < 5; j++) {
+//     console.write(`${i} ${j}`);
+//   }
+// }
+// let arr = [1, 0];
+// if (0 < 1) {
+//   console.log("less than");
+// }
+let name = "Edison";
+console.log(name[0]);
+console.log(name[1]);
+console.log(name[2]);
+console.log(name[3]);
+console.log(name[4]);
+console.log(name[5]);
