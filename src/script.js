@@ -369,13 +369,14 @@ startBtn.addEventListener("click", () => {
 
   // number of process
   numProcess = parseInt(numProcess.value);
-  if (numProcess) {
+  if (Number.isInteger(numProcess)) {
     schedule.process = numProcess;
   } else {
     error += 1;
-    new Log("Process:", "Positive Numbers Only").logActvityElement(
+    new Log("Process:", "Positive Whole Numbers Only").logActvityElement(
       "text-red-400"
     );
+    return 1;
   }
 
   // arrivals
@@ -430,18 +431,17 @@ startBtn.addEventListener("click", () => {
       schedule.burst
     );
 
-    task.execute();
+    let result = task.execute();
     let sortedTask = task.sortProcessName();
-    if (isObject(sortedTask)) {
-      new Log("Error:", sortedTask.error).logActvityElement("text-red-400");
+    if (isObject(result)) {
+      new Log("Error:", result.message).logActvityElement("text-red-400");
     } else {
       for (let i = 0; i < sortedTask.length; i++) {
         new TableData(sortedTask[i]);
+        new SolutionElement(task.solution());
+        new GanttChartElement(task);
       }
     }
-
-    new SolutionElement(task.solution());
-    new GanttChartElement(task);
   }
 });
 
