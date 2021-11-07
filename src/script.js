@@ -369,7 +369,7 @@ startBtn.addEventListener("click", () => {
 
   // number of process
   numProcess = parseInt(numProcess.value);
-  if (Number.isInteger(numProcess)) {
+  if (Number.isInteger(numProcess) && numProcess>=1) {
     schedule.process = numProcess;
   } else {
     error += 1;
