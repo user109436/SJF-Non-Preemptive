@@ -204,12 +204,12 @@ class Schedule {
   round = (digit) => {
     let x = this.process;
     for (let i = 0; i < this.numProcess; i++) {
-      x[i].arrival = x[i].arrival.toPrecision(digit);
-      x[i].burst = x[i].burst.toPrecision(digit);
-      x[i].completionTime = x[i].completionTime.toPrecision(digit);
-      x[i].turnAroundTime = x[i].turnAroundTime.toPrecision(digit);
-      x[i].waitingTime = x[i].waitingTime.toPrecision(digit);
-      x[i].responseTime = x[i].responseTime.toPrecision(digit);
+      x[i].arrival = parseFloat(x[i].arrival.toPrecision(digit));
+      x[i].burst = parseFloat(x[i].burst.toPrecision(digit));
+      x[i].completionTime = parseFloat(x[i].completionTime.toPrecision(digit));
+      x[i].turnAroundTime = parseFloat(x[i].turnAroundTime.toPrecision(digit));
+      x[i].waitingTime = parseFloat(x[i].waitingTime.toPrecision(digit));
+      x[i].responseTime = parseFloat(x[i].responseTime.toPrecision(digit));
     }
   };
 }
