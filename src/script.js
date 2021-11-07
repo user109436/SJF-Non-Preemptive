@@ -161,6 +161,7 @@ class Schedule {
     }
     this.process = sortedArrival;
     this.timeElapse = timeElapse;
+    this.round(2);
     return sortedArrival;
   };
   printQue = (que) => {
@@ -185,8 +186,8 @@ class Schedule {
       s.averageTurnAroundTime.push(
         `${p.name} = (${p.completionTime} - ${p.arrival}) = ${p.turnAroundTime}`
       );
-      sumTAT += p.turnAroundTime;
-      sumWT += p.waitingTime;
+      sumTAT += parseFloat(p.turnAroundTime);
+      sumWT += parseFloat(p.waitingTime);
     }
     s.averageWaitingTime.push(
       `Average Waiting Time:(${sumWT} / ${this.numProcess}) = ${
@@ -199,6 +200,17 @@ class Schedule {
       }ms`
     );
     return this.solutions;
+  };
+  round = (digit) => {
+    let x = this.process;
+    for (let i = 0; i < this.numProcess; i++) {
+      x[i].arrival = x[i].arrival.toPrecision(digit);
+      x[i].burst = x[i].burst.toPrecision(digit);
+      x[i].completionTime = x[i].completionTime.toPrecision(digit);
+      x[i].turnAroundTime = x[i].turnAroundTime.toPrecision(digit);
+      x[i].waitingTime = x[i].waitingTime.toPrecision(digit);
+      x[i].responseTime = x[i].responseTime.toPrecision(digit);
+    }
   };
 }
 
@@ -369,7 +381,7 @@ startBtn.addEventListener("click", () => {
 
   // number of process
   numProcess = parseInt(numProcess.value);
-  if (Number.isInteger(numProcess) && numProcess>=1) {
+  if (Number.isInteger(numProcess) && numProcess >= 1) {
     schedule.process = numProcess;
   } else {
     error += 1;
